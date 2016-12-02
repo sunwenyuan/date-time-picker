@@ -1,0 +1,26 @@
+<input type="text" (click)="inputFieldClickHandler()" name="dateDisplay" [(ngModel)]="dateDisplay">
+<div *ngIf="showDatePicker" class="date-picker-wrapper">
+  <div class="button-region">
+    <button (click)="previousMonthBtnHandler()">{{previousMonthBtnText}}</button>
+    <span>{{currentDate.format('MMMM YYYY')}}</span>
+    <button (click)="nextMonthBtnHandler()">{{nextMonthBtnText}}</button>
+  </div>
+  <hr>
+  <div class="calendar-region">
+    <div class="calendar-header">
+      <div *ngFor="let headerItem of headerList">
+        {{headerItem}}
+      </div>
+    </div>
+    <hr>
+    <div class="calendar-content">
+      <div *ngFor="let day of days">
+        {{day}}
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="bottom-region">
+    <button class="close-button" (click)="closeBtnHandler()">Close</button>
+  </div>
+</div>

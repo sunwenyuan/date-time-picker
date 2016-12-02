@@ -1,0 +1,49 @@
+.date-picker-wrapper {
+  width: 336px;
+  height: 432px;
+  border: solid 1px red;
+
+  hr {
+    margin: 0px;
+  }
+
+  .button-region {
+    width: 100%;
+    height: 48px;
+  }
+
+  .calendar-region {
+    width: 100%;
+    height: 336px;
+
+    .calendar-header {
+      height: 48px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+
+      >div {
+        width: 48px;
+        height: 100%;
+      }
+    }
+
+    .calendar-content {
+      width: 100%;
+      height: 288px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+
+      >div {
+        width: 48px;
+        height: 48px;
+      }
+    }
+  }
+
+  .bottom-region {
+    height: 48px;
+    width: 100%;
+  }
+}
