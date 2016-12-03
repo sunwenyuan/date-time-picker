@@ -10,17 +10,39 @@
   height: 432px;
   position: absolute;
   z-index: 5000;
-  background-color: @base-background-color;
+  background-color: white;
   color: @base-color;
   opacity: @base-color-opacity;
+  box-sizing: border-box;
 
-  hr {
-    margin: 0px;
-  }
-
-  .button-region {
+  .nav-region {
     width: 100%;
     height: 48px;
+    display: flex;
+    box-sizing: border-box;
+    border-bottom: 1px solid @base-background-color;
+
+    .nav-button {
+      flex: 1 1 25%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-button:hover {
+      background-color: @hover-background-color;
+      color: @selected-color;
+      cursor: pointer;
+    }
+
+    .nav-text {
+      flex: 2 2 50%;
+      border-left: 1px solid @base-background-color;
+      border-right: 1px solid @base-background-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   .calendar-region {
@@ -32,6 +54,8 @@
       width: 100%;
       display: flex;
       justify-content: flex-start;
+      box-sizing: border-box;
+      border-bottom: 1px solid @base-background-color;
 
       >div {
         width: 48px;
@@ -52,7 +76,7 @@
       >div {
         width: 48px;
         height: 48px;
-        background-color: @base-background-color;
+        background-color: white;
         color: @base-color;
         opacity: @base-color-opacity;
 
@@ -62,6 +86,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          cursor: pointer;
         }
 
         >div:hover {
@@ -80,5 +105,25 @@
   .bottom-region {
     height: 48px;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid @base-background-color;
+    box-sizing: border-box;
+
+    .bottom-button {
+      height: 100%;
+      cursor: pointer;
+      flex-basis: 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: @selected-background-color;
+      color: @selected-color;
+    }
+
+    .bottom-button:hover {
+      background-color: @hover-background-color;
+    }
   }
 }

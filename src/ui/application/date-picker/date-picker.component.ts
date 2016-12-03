@@ -57,7 +57,7 @@ export class DatePickerComponent implements OnInit {
 
   ngOnInit() {
     this.dateDisplay = this.currentDate.format(this.dateFormat);
-    this.refreshDays();
+    this.refreshCalendar();
   }
 
   handleGlobalClick(event: MouseEvent) {
@@ -115,7 +115,7 @@ export class DatePickerComponent implements OnInit {
     }
   }
 
-  refreshDays() {
+  refreshCalendar() {
     const year = this.currentDate.year();
     const month = this.currentDate.month();
     const date = 1;
@@ -143,18 +143,14 @@ export class DatePickerComponent implements OnInit {
     }
   }
 
-  previousMonthBtnHandler() {
-    this.currentDate.subtract(1, 'months');
-    this.refreshDays();
-  }
-
-  nextMonthBtnHandler() {
-    this.currentDate.add(1, 'months');
-    this.refreshDays();
-  }
-
-  closeBtnHandler() {
-    this.closeCalendar();
+  stepMonth(direction: string) {
+    if (direction === 'previous') {
+      this.currentDate.subtract(1, 'months');
+    }
+    else {
+      this.currentDate.add(1, 'months');
+    }
+    this.refreshCalendar();
   }
 
   selectDate(day: string) {
