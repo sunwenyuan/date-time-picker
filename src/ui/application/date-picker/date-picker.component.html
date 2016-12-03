@@ -1,5 +1,20 @@
-<input type="text" (click)="inputFieldClickHandler()" name="dateDisplay" [(ngModel)]="dateDisplay">
-<div *ngIf="showDatePicker" class="date-picker-wrapper">
+<input
+  [id]="triggerDivId"
+  type="text"
+  (click)="inputFieldClickHandler()"
+  name="dateDisplay"
+  [(ngModel)]="dateDisplay"
+>
+<div
+  *ngIf="showDatePicker"
+  [ngStyle]="{
+    'top.px': calendarPosition.top,
+    'left.px': calendarPosition.left,
+    'bottom.px': calendarPosition.bottom,
+    'right.px': calendarPosition.right
+  }"
+  class="date-picker-wrapper"
+>
   <div class="button-region">
     <button (click)="previousMonthBtnHandler()">{{previousMonthBtnText}}</button>
     <span>{{currentDate.format('MMMM YYYY')}}</span>

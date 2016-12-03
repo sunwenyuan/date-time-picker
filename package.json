@@ -8,9 +8,7 @@
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail"
   },
   "devDependencies": {
-    "@types/core-js": "^0.9.34",
     "@types/jasmine": "^2.5.38",
-    "@types/moment": "^2.13.0",
     "@types/node": "^6.0.51",
     "angular2-template-loader": "^0.4.0",
     "awesome-typescript-loader": "^2.2.4",
