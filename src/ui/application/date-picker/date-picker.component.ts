@@ -9,8 +9,6 @@ import * as moment from 'moment';
 export class DatePickerComponent implements OnInit {
   @Input() dateFormat: string = 'YYYY-MM-DD';
 
-  previousMonthBtnText: string = '<';
-  nextMonthBtnText: string = '>';
   headerList: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   days: string[] = [];
   showDatePicker: boolean = false;
@@ -34,18 +32,8 @@ export class DatePickerComponent implements OnInit {
     private renderer: Renderer,
     private elementRef: ElementRef
   ) {
-    this.currentDate = moment().set({
-      'hour': 0,
-      'minute': 0,
-      'second': 0,
-      'millisecond': 0
-    });
-    this.selectedDate = moment().set({
-      'hour': 0,
-      'minute': 0,
-      'second': 0,
-      'millisecond': 0
-    });
+    this.currentDate = this.getNow();
+    this.selectedDate = this.getNow();
     this.triggerDivId = `j17s-calendar-${moment().valueOf()}`;
 
     this.clickListener = renderer.listenGlobal(
@@ -58,6 +46,15 @@ export class DatePickerComponent implements OnInit {
   ngOnInit() {
     this.dateDisplay = this.currentDate.format(this.dateFormat);
     this.refreshCalendar();
+  }
+
+  private getNow(): moment.Moment {
+    return moment().set({
+      'hour': 0,
+      'minute': 0,
+      'second': 0,
+      'millisecond': 0
+    });
   }
 
   handleGlobalClick(event: MouseEvent) {
