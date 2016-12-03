@@ -1,9 +1,18 @@
+@base-background-color: #C5CAE9;
+@selected-background-color: #3F51B5;
+@hover-background-color: #303F9F;
+@base-color: #000000;
+@base-color-opacity: 0.87;
+@selected-color: #FFFFFF;
+
 .date-picker-wrapper {
   width: 336px;
   height: 432px;
   position: absolute;
   z-index: 5000;
-  border: solid 1px red;
+  background-color: @base-background-color;
+  color: @base-color;
+  opacity: @base-color-opacity;
 
   hr {
     margin: 0px;
@@ -27,6 +36,9 @@
       >div {
         width: 48px;
         height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
 
@@ -40,6 +52,27 @@
       >div {
         width: 48px;
         height: 48px;
+        background-color: @base-background-color;
+        color: @base-color;
+        opacity: @base-color-opacity;
+
+        >div {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        >div:hover {
+          background-color: @hover-background-color;
+          color: @selected-color;
+        }
+
+        .selected {
+          background-color: @selected-background-color;
+          color: @selected-color;
+        }
       }
     }
   }

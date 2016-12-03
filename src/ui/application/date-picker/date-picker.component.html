@@ -30,7 +30,9 @@
     <hr>
     <div class="calendar-content">
       <div *ngFor="let day of days">
-        {{day}}
+        <div *ngIf="day !== ''" [ngClass]="getDayDivCls(day)" (click)="selectDate(day)">
+          {{day}}
+        </div>
       </div>
     </div>
   </div>
