@@ -44,7 +44,7 @@ export class DatePickerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dateDisplay = this.currentDate.format(this.dateFormat);
+    this.dateDisplay = this.selectedDate.format(this.dateFormat);
     this.refreshCalendar();
   }
 
@@ -158,6 +158,8 @@ export class DatePickerComponent implements OnInit {
       month,
       day: parseInt(day, 10)
     });
+    this.closeCalendar();
+    this.dateDisplay = this.selectedDate.format(this.dateFormat);
   }
 
   getDayDivCls(day: string) {
