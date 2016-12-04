@@ -6,7 +6,8 @@
   [(ngModel)]="dateDisplay"
 >
 <div
-  *ngIf="showDatePicker"
+  [id]="calendarDivId"
+  [hidden]="!showDatePicker"
   [ngStyle]="{
     'top.px': calendarPosition.top,
     'left.px': calendarPosition.left,

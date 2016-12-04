@@ -21,11 +21,8 @@ export class DatePickerComponent implements OnInit {
     right: 0,
     bottom: 0
   };
-  private calendarSize: { width: number; height: number; } = {
-    width: 336,
-    height: 432
-  };
   triggerDivId: string;
+  calendarDivId: string;
   clickListener: Function;
 
   constructor(
@@ -34,7 +31,8 @@ export class DatePickerComponent implements OnInit {
   ) {
     this.currentDate = this.getNow();
     this.selectedDate = this.getNow();
-    this.triggerDivId = `j17s-calendar-${moment().valueOf()}`;
+    this.triggerDivId = `j17s-calendar-trigger-${moment().valueOf()}`;
+    this.calendarDivId = `j17s-calendar-${moment().valueOf()}`;
 
     this.clickListener = renderer.listenGlobal(
       'document',
@@ -78,6 +76,14 @@ export class DatePickerComponent implements OnInit {
   }
 
   updateCalendarPosition() {
+    const el = document.getElementById(this.calendarDivId);
+    const style = window.getComputedStyle(el).getPropertyValue('font-size');
+    const fontSize = parseFloat(style);
+    const calendarSize = {
+      width: fontSize * 21,
+      height: fontSize * 27
+    };
+
     const triggerDivElement: HTMLElement = document.getElementById(this.triggerDivId);
     const { height, top, left, width } = triggerDivElement.getBoundingClientRect();
     const right = window.innerWidth - width - left;
@@ -90,8 +96,8 @@ export class DatePickerComponent implements OnInit {
       bottom: 0
     };
 
-    if (bottom >= this.calendarSize.height) {
-      if (right + width > this.calendarSize.width) {
+    if (bottom >= calendarSize.height) {
+      if (right + width > calendarSize.width) {
         this.calendarPosition.top = top + height;
         this.calendarPosition.left = left;
       }
@@ -101,7 +107,7 @@ export class DatePickerComponent implements OnInit {
       }
     }
     else {
-      if (right + width > this.calendarSize.width) {
+      if (right + width > calendarSize.width) {
         this.calendarPosition.bottom = bottom + height;
         this.calendarPosition.left = left;
       }
@@ -158,7 +164,6 @@ export class DatePickerComponent implements OnInit {
       month,
       day: parseInt(day, 10)
     });
-    this.closeCalendar();
     this.dateDisplay = this.selectedDate.format(this.dateFormat);
   }
 
